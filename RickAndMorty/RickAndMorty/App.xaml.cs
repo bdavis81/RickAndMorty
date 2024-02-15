@@ -1,6 +1,4 @@
-﻿using RickAndMorty.Services;
-using RickAndMorty.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +11,6 @@ namespace RickAndMorty
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

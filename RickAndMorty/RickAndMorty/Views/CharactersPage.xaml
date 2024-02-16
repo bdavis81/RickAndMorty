@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                          
+             xmlns:local="clr-namespace:RickAndMorty.ViewModels"
+             xmlns:model="clr-namespace:RickAndMorty.Models" 
+             xmlns:view="clr-namespace:RickAndMorty.Views"
+             x:Class="RickAndMorty.Views.CharactersPage"
+             x:DataType="local:CharactersViewModel"
+             x:Name="BrowseItemsPage"
+             Title="All Characters"
+             BackgroundColor="#FF272b33">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <view:CharacterStatusToColorConvertor x:Key="CharacterStatusToColor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Characters}"
+                RemainingItemsThreshold="4"
+                RemainingItemsThresholdReachedCommand="{Binding LoadCharactersCommand}"
+                SelectionMode="None" Margin="5,0">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid x:DataType="model:Character" 
+                      RowDefinitions="140,Auto" ColumnDefinitions="140" RowSpacing="5" ColumnSpacing="0">
+                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding Image}" />
+                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="10,0" BackgroundColor="#FF3C3E44">
+                        <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                        <StackLayout Orientation="Horizontal">
+                            <Ellipse Fill="{Binding Status, Converter={StaticResource CharacterStatusToColor}}"
+                                     WidthRequest="10"
+                                     HeightRequest="10"
+                                     VerticalOptions="Center" />
+                            <Label FontSize="12">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Status}" />
+                                        <Span Text=" - " />
+                                        <Span Text="{Binding Species}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <Label Text="Last known location:" FontSize="12" TextColor="Gray" />
+                        <Label Text="{Binding Location}" FontSize="12" />
+                        <Label Text="First seen in:" FontSize="12" TextColor="Gray" />
+                        <Label Text="{Binding Origin}" FontSize="12" />
+                    </StackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                              Command="{Binding Source={RelativeSource AncestorType={x:Type local:CharactersViewModel}}, Path=InspectCharacterCommand}"
+                                              CommandParameter="{Binding .}">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

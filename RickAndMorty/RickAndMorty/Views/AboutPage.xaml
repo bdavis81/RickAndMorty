@@ -2,20 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RickAndMorty.Views.AboutPage"
-             xmlns:vm="clr-namespace:RickAndMorty.ViewModels"
-             Title="{Binding Title}">
+             Title="About"
+             BackgroundColor="#FF3C3E44">
 
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Margin="30">
         <Label Text="Sources:" FontSize="22" />
-        <Label Text="The app uses data from 'The Rick and Morty API', which is developed and maintained by Axel Fuhrmann." />
+        <Label Text="The app uses data from 'The Rick and Morty API', developed and maintained by Axel Fuhrmann." />
         <Label Text="Credits:" FontSize="22" />
         <Label Text="● 'Rick and Morty' is created by Justin Roiland and Dan Harmon for Adult Swim" />
         <Label Text="● API creator: Axel Fuhrmann" />
         <Label Text="● App creator: Brian Davis" />
         <Label Text="Additional details:" FontSize="22" />
         <Label Text="● The app provides detailed information about characters, locations, episodes, and more from the popular animated TV show Rick and Morty." />
-        <Label Text="● The app is constantly being updated with new information and features." />
-        <Label Text="● The app made with enjoyment." />
+        <Label Text="● The app is constantly updated with new information and features." />
+        <Label Text="● The app was made with enjoyment." />
     </StackLayout>
 
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using RickAndMorty.Views;
+using Xamarin.Forms;
 
 namespace RickAndMorty
 {
@@ -7,6 +8,8 @@ namespace RickAndMorty
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(CharacterDetailPage), typeof(CharacterDetailPage));
         }
+
     }
 }

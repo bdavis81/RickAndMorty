@@ -1,4 +1,7 @@
-﻿using RickAndMorty.API;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using RickAndMorty.API;
 using RickAndMorty.Services;
 using Xamarin.Forms;
 
@@ -34,6 +37,11 @@ namespace RickAndMorty
 
         protected override void OnStart()
         {
+            AppCenter.Start("ios={Your App secret here};" +
+                  "uwp={Your UWP App secret here};" +
+                  "android={Your Android App secret here};" +
+                  "macos={Your macOS App secret here};",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()
